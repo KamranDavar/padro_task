@@ -2,6 +2,7 @@ import React from 'react';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {Box, CircularProgress} from '@mui/material';
 import {AppRouter} from './routing';
+import {StateProvider} from './GlobalState/store';
 
 
 export default function App() {
@@ -20,9 +21,11 @@ export default function App() {
 
     return (
         <React.Suspense fallback={Loading}>
-            <ThemeProvider theme={theme}>
-                <AppRouter/>
-            </ThemeProvider>
+            <StateProvider>
+                <ThemeProvider theme={theme}>
+                    <AppRouter/>
+                </ThemeProvider>
+            </StateProvider>
         </React.Suspense>
     );
 }
