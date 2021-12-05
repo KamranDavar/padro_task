@@ -2,7 +2,7 @@ import React from 'react';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {Box, CircularProgress} from '@mui/material';
 import {AppRouter} from './routing';
-import {StateProvider} from './GlobalState/store';
+import {StateProvider} from './globalState/store';
 
 
 export default function App() {

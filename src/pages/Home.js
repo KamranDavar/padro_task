@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
-import {store} from '../GlobalState/store';
-import {CHANGE_CURRENT_PAGE} from '../GlobalState/typs';
+import {store} from '../globalState/store';
+import {CHANGE_CURRENT_PAGE} from '../globalState/typs';
 import {Form} from '../components';
 
 export function Home() {
