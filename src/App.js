@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {Box, CircularProgress} from '@mui/material';
+import {AppRouter} from './routing';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default function App() {
+
+    const theme = createTheme({
+        palette: {},
+    });
+    const Loading = (<Box sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 16,
+    }}>
+        <CircularProgress/>
+    </Box>);
+
+    return (
+        <React.Suspense fallback={Loading}>
+            <ThemeProvider theme={theme}>
+                <AppRouter/>
+            </ThemeProvider>
+        </React.Suspense>
+    );
 }
-
-export default App;
