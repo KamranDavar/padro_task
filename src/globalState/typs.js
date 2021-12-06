@@ -1,1 +1,2 @@
 export const CHANGE_CURRENT_PAGE='CHANGE_CURRENT_PAGE'
+export const GET_TASKS='GET_TASKS'

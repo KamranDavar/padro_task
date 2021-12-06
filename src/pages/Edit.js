@@ -11,6 +11,7 @@ export function Edit() {
         () => {
             dispatch({type: CHANGE_CURRENT_PAGE, payload: "Edit"})
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         , [])
     return (
         <>
