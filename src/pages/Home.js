@@ -5,7 +5,7 @@ import {Form, List} from '../components';
 
 export function Home() {
     const globalState = useContext(store);
-    const {dispatch} = globalState;
+    const {dispatch, state} = globalState;
 
     useEffect(
         () => {
@@ -13,11 +13,11 @@ export function Home() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
         , [])
-
+    const tasks = state.tasks;
     return (
         <>
             <Form/>
-            <List/>
+            <List items={tasks}/>
         </>
     );
 }

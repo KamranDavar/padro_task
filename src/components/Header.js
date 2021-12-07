@@ -14,10 +14,9 @@ export function Header() {
     const {currentPage} = globalState.state;
     return (
         <Box sx={{flexGrow: 1}}>
-            <AppBar position="static">
+            <AppBar position="static" >
                 <Container>
-
-                    <Toolbar>
+                    <Toolbar sx={{paddingLeft:'0px !important'}} >
                         <Breadcrumbs aria-label="breadcrumb">
                             <Link to="/">
                                 Task Management

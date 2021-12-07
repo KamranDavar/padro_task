@@ -29,7 +29,7 @@ function editTask(task) {
     let indexToBeEdit
     let tasks=getAllTasks()
     tasks.forEach((item, index) => {
-        if (item.id === task.id.toString()) {
+        if (item.id === task.id) {
             indexToBeEdit = index
         }
         tasks[indexToBeEdit]=task
