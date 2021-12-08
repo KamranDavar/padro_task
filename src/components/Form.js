@@ -11,11 +11,15 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import {MenuItem} from '@mui/material';
 import Typography from '@mui/material/Typography';
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
-
+import {IoAdd} from 'react-icons/io5';
+import {FaEdit} from 'react-icons/fa';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import theme from '../theme '
 
 
 export function Form() {
+    const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+
     const globalState = useContext(store);
     const {dispatch} = globalState;
     const {id} = useParams()
@@ -43,8 +47,8 @@ export function Form() {
         id ? edit(data, id) : add(data);
     };
     const title = id ? "Edit Task" : "Add a new Task"
-    return (<>
-            <Typography variant="h5" component="div" gutterBottom>
+    return (<div style={styles.wrapper}>
+            <Typography variant="h5" component="div" gutterBottom sx={styles.title}>
                 {title}
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +75,7 @@ export function Form() {
                             render={({field}) => <> <FormControl fullWidth> <TextField
                                 {...field}
                                 multiline
-                                rows={4}
+                                rows={!id ? 4 : isMobile ? 4 : 14}
                                 error={!!errors.description}
                                 helperText={!!errors.description && "required"}
                                 label="Description"
@@ -87,11 +91,9 @@ export function Form() {
                             control={control}
                             rules={{required: true}}
                             render={({field}) => <> <FormControl fullWidth>
-                                {/*<InputLabel id="demo-simple-select-label">Age</InputLabel>*/}
                                 <Select
                                     {...field}
-                                    // labelId="demo-simple-select-label"
-                                    // label="status"
+
                                     variant="filled"
                                     size='small'
                                 >
@@ -102,21 +104,26 @@ export function Form() {
                         />
                     </Grid>
                     }
-                        <Grid item xs={id ? 6 : 12}>
-                            <FormControl fullWidth>
-                                <Button type="submit" variant='contained'><AddRoundedIcon/> ADD</Button>
-                            </FormControl>
-                        </Grid>
-                        {id && <Grid item xs={6}>
-                            <FormControl fullWidth>
-                                <Button variant='outlined'
-                                        onClick={() => navigate('/')}
-                                >Cancel</Button>
-                            </FormControl>
-                        </Grid>}
+                    <Grid item xs={id ? 6 : 12}>
+                        <FormControl fullWidth>
+                            <Button type="submit" variant='contained' size="large" sx={styles.button}>
+                                {id ? <><FaEdit style={styles.icon}/> Edit</> : <><IoAdd
+                                    sx={styles.icon}/> Add</>}
+                            </Button>
+                        </FormControl>
+                    </Grid>
+                    {id && <Grid item xs={6}>
+                        <FormControl fullWidth>
+                            <Button variant='outlined'
+                                    onClick={() => navigate('/')}
+                                    size="large"
+                                    sx={styles.button}
+                            >Cancel</Button>
+                        </FormControl>
+                    </Grid>}
                 </Grid>
             </form>
-        </>
+        </div>
     );
 }
 
@@ -150,3 +157,16 @@ export const optionsLabel =
         5:
             'Blocked'
     }
+export const styles = {
+    wrapper: {
+        padding: '0 2rem 0 2rem',
+    },
+    title: {
+        paddingTop: '1rem', paddingBottom: '1rem',
+    },
+    button: {
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+    },
+    icon: {fontSize: '16px', marginRight:'0.5rem'},
+}

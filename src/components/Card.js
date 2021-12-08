@@ -1,12 +1,12 @@
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 import MuiCard from '@mui/material/Card';
 import {optionsLabel} from './Form';
-import EditIcon from '@mui/icons-material/Edit';
-import Box from '@mui/material/Box';
+import {FaEdit} from 'react-icons/fa';
+
+import theme from '../theme '
 
 export function Card({item}) {
     return (
@@ -14,7 +14,7 @@ export function Card({item}) {
             sx={styles.card}
         >
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography gutterBottom variant="h6" component="div" sx={[styles.title]}>
                     {item.title}
                 </Typography>
 
@@ -23,11 +23,11 @@ export function Card({item}) {
                 </Typography>
             </CardContent>
             <CardActions sx={styles.actions.wrapper}>
-                <Box sx={styles.actions.status}>
+                <Typography variant="button" sx={styles.actions.status}>
                     {optionsLabel[item.status]}
-                </Box>
-                <Link style={styles.actions.edit} to={`/${item.id}`}>
-                    <Button size="small"><EditIcon/></Button>
+                </Typography>
+                <Link to={`/${item.id}`}>
+                    <FaEdit style={styles.edit}/>
                 </Link>
             </CardActions>
         </MuiCard>
@@ -35,18 +35,48 @@ export function Card({item}) {
 }
 
 const styles = {
-    card: {height: '200px', display: 'flex', flexDirection: 'column'},
-    desc: {height: '70px', overflow: 'auto'},
+    card: {
+        height: '200px', display: 'flex', flexDirection: 'column',
+        [theme.breakpoints.up('sm')]: {
+            height: '240px',
+        },
+        [theme.breakpoints.up('md')]: {
+            height: '280px',
+        },
+    },
+    title: {
+        height: '20px', overflow: 'auto',
+        [theme.breakpoints.up('sm')]: {
+            height: '25px',
+        },
+        [theme.breakpoints.up('md')]: {
+            height: '30px',
+        },
+    },
+    desc: {
+        height: '90px', overflow: 'auto',
+        [theme.breakpoints.up('sm')]: {
+            height: '120px',
+        },
+        [theme.breakpoints.up('md')]: {
+            height: '150px',
+        },
+    },
     actions: {
         wrapper: {
             display: 'flex',
             justifyContent: 'space-between'
         },
         status: {
-            backgroundColor: 'primary.main', display: 'inline', padding: "0.5rem 1rem",
+            backgroundColor: 'primary.main', display: 'inline', padding: "0.3rem 0.6rem",
             borderRadius: '0.5rem', color: 'white'
         },
-        edit: {float: 'flex-end'}
-    }
+    },
+    edit: {
+        color: 'black', fontSize: '20px', marginRight: '0.5rem',
+        [theme.breakpoints.up('sm')]: {
+            fontSize: '30px',
+        },
 
+    },
 }

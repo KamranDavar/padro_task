@@ -14,18 +14,29 @@ export function Header() {
     const {currentPage} = globalState.state;
     return (
         <Box sx={{flexGrow: 1}}>
-            <AppBar position="static" >
+            <AppBar position="static">
                 <Container>
-                    <Toolbar sx={{paddingLeft:'0px !important'}} >
-                        <Breadcrumbs aria-label="breadcrumb">
-                            <Link to="/">
-                                Task Management
+                    <Toolbar sx={styles.toolbar}>
+                        <Breadcrumbs separator="›" aria-label="breadcrumb" sx={styles.breadcrumb}>
+                            <Link to="/" style={styles.link}>
+                                <Typography >
+                                    Task Management
+                                </Typography>
                             </Link>
-                            <Typography color="text.primary">{currentPage}</Typography>
+                            <Typography sx={styles.link}>{currentPage}</Typography>
                         </Breadcrumbs>
                     </Toolbar>
                 </Container>
             </AppBar>
         </Box>
     );
+}
+
+const styles = {
+    toolbar: {paddingLeft: '0px !important',  },
+    breadcrumb:{color: "white"},
+    link: {
+        textDecoration: 'none',
+        color: "white",
+    }
 }

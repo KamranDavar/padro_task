@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 export function List({items}) {
     return (<>
             <Grid item xs={12}  sx={styles.wrapper}>
-                <Typography variant="h5" component="div" gutterBottom sx={styles.title}>
+                <Typography variant="h3" component="div" gutterBottom sx={styles.title}>
                     Tasks
                 </Typography>
 
@@ -22,13 +22,13 @@ export function List({items}) {
 }
 
 const styles = {
-    title:{color: 'white'},
+    title:{color: 'white', paddingLeft: '1rem'},
     wrapper: {
         backgroundColor: 'primary.main', marginTop: '1rem', padding: '1rem 0 0 1rem',
         borderRadius: '1.5rem'
     },
     album: {
-        backgroundColor: '#8bc0fc', paddingRight: '1rem', paddingBottom: '1rem',
+        backgroundColor: '#8bc0fc', padding:'1rem 2rem 2rem 1rem',
         borderRadius: '1.5rem 1.5rem 0 0', marginTop: '0'
     }
 }
