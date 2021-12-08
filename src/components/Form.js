@@ -160,6 +160,7 @@ export const optionsLabel =
 export const styles = {
     wrapper: {
         padding: '0 2rem 0 2rem',
+        flexGrow:'0'
     },
     title: {
         paddingTop: '1rem', paddingBottom: '1rem',

@@ -15,9 +15,17 @@ export function Home() {
         , [])
     const tasks = state.tasks;
     return (
-        <>
+        <div style={styles.container}>
             <Form/>
             <List items={tasks}/>
-        </>
+        </div>
     );
+}
+
+const styles = {
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '94vh'
+    }
 }

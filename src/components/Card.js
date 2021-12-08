@@ -74,9 +74,5 @@ const styles = {
     },
     edit: {
         color: 'black', fontSize: '20px', marginRight: '0.5rem',
-        [theme.breakpoints.up('sm')]: {
-            fontSize: '30px',
-        },
-
     },
 }

@@ -17,6 +17,8 @@ export function Content({children}) {
 
 const styles={
     container:{
+        display:'flex',
+        flexDirection:'column',
         [theme.breakpoints.down('sm')]: {
             paddingRight: '0',
             paddingLeft: '0',
